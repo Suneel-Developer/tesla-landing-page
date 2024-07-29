@@ -13,9 +13,16 @@ const CountPrize = () => {
         setEthInput(e.target.value);
     };
 
+    // Function to format results
+    const formatResult = (value) => {
+        if (!value) return '0';
+        const numValue = parseFloat(value) * 2;
+        return Number.isInteger(numValue) ? numValue : numValue.toFixed(2);
+    };
+
     // Calculate results
-    const btcResult = btcInput ? (parseFloat(btcInput) * 2).toFixed(0) : 0;
-    const ethResult = ethInput ? (parseFloat(ethInput) * 2).toFixed(0) : 0;
+    const btcResult = formatResult(btcInput);
+    const ethResult = formatResult(ethInput);
 
     return (
         <section className='pt-[50px] mt-[30px]'>
